@@ -1,29 +1,45 @@
 export const projects = [
   {
-    title: 'Adaptive Analytics Dashboard',
+    title: 'Secure Messaging App',
+    timeline: 'Fall 2025',
     description:
-      'A responsive analytics platform with real-time insights, custom data visualizations, and intelligent alerting.',
-    tech: ['React', 'D3.js', 'Node.js'],
-    link: '#',
-    image:
-      'https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&w=900&q=80'
+      'Full-stack messaging platform prioritizing encryption-first communication and dependable authentication.',
+    bullets: [
+      'Implemented end-to-end encryption, MFA, and JWT session management to secure every interaction.',
+      'Built RESTful APIs with key-rotation protocols that preserved data integrity across sessions.',
+      'Established CI/CD testing pipelines and UML documentation to standardize team workflows.'
+    ],
+    tech: ['React', 'Python', 'MySQL']
   },
   {
-    title: 'Immersive Travel Stories',
-    description:
-      'Story-driven travel microsites highlighting destinations with immersive imagery and curated itineraries.',
-    tech: ['Next.js', 'Framer Motion', 'Contentful'],
-    link: '#',
-    image:
-      'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=900&q=80'
+    title: 'Chew Chat – Food Thread Platform',
+    timeline: 'Spring 2025',
+    description: 'Social platform for restaurant storytelling with reusable UI components and real-time feeds.',
+    bullets: [
+      'Developed a modular React + Node.js stack with dynamic routing and JWT authentication.',
+      'Integrated image uploads and MongoDB-backed feeds with pagination and caching for performance.',
+      'Adopted Agile collaboration practices to accelerate iteration and feature delivery.'
+    ],
+    tech: ['React', 'TypeScript', 'Node.js', 'MongoDB']
   },
   {
-    title: 'Creator Commerce Toolkit',
-    description:
-      'Tools for independent creators to launch shops, manage product drops, and analyze performance.',
-    tech: ['Remix', 'Stripe', 'GraphQL'],
-    link: '#',
-    image:
-      'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=80'
+    title: 'La Casa Mia Website',
+    timeline: 'Summer 2024',
+    description: 'Responsive website uplifting local restaurant visibility across desktop and mobile.',
+    bullets: [
+      'Designed and built intuitive information architecture with accessible navigation patterns.',
+      'Optimized load speed and WCAG accessibility for consistent guest experiences.'
+    ],
+    tech: ['HTML', 'CSS', 'JavaScript']
+  },
+  {
+    title: 'Tic-Tac-Toe Game Engine',
+    timeline: 'Winter 2024',
+    description: 'Interactive browser game exploring component-driven state management.',
+    bullets: [
+      'Implemented functional React components with stateful rendering and time-travel debugging.',
+      'Added score tracking and persistence to analyze user flows and component reactivity.'
+    ],
+    tech: ['React', 'JavaScript', 'CSS']
   }
 ];
