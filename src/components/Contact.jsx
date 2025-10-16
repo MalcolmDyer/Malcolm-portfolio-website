@@ -1,60 +1,47 @@
+const contactMethods = [
+  {
+    label: 'Email',
+    value: 'malcolm.ryu.dyer@gmail.com',
+    href: 'mailto:malcolm.ryu.dyer@gmail.com'
+  },
+  {
+    label: 'Phone',
+    value: '(408) 340-8601',
+    href: 'tel:+14083408601'
+  },
+  {
+    label: 'LinkedIn',
+    value: 'linkedin.com/in/malcolm-dyer',
+    href: 'https://linkedin.com/in/malcolm-dyer'
+  }
+];
+
 export function Contact() {
   return (
-    <section id="contact" className="mx-auto mt-28 max-w-5xl px-6 text-white">
+    <section id="contact" className="mx-auto mt-24 max-w-5xl px-6 text-white">
       <div className="rounded-3xl border border-white/10 bg-gradient-to-br from-white/10 via-white/5 to-white/0 p-10 backdrop-blur">
         <div className="grid gap-10 md:grid-cols-2 md:items-center">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.35em] text-accent">Let&apos;s collaborate</p>
-            <h2 className="mt-4 text-3xl font-semibold">Have a project in mind?</h2>
+            <p className="text-sm font-semibold uppercase tracking-[0.35em] text-accent">Contact</p>
+            <h2 className="mt-4 text-3xl font-semibold">Let&apos;s talk about building secure, human-centered products</h2>
             <p className="mt-6 text-sm text-white/70">
-              I’m currently booking new engagements for Q3. Share a few details about your goals, and I’ll be in touch
-              within two business days.
+              I&apos;m actively seeking internships and collaborative projects for 2025. Reach out and let&apos;s explore how we can
+              ship something resilient together.
             </p>
           </div>
-          <form className="space-y-5">
-            <div>
-              <label htmlFor="name" className="text-xs uppercase tracking-[0.25em] text-white/60">
-                Name
-              </label>
-              <input
-                id="name"
-                name="name"
-                type="text"
-                placeholder="Malcolm Reynolds"
-                className="mt-2 w-full rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-sm text-white placeholder:text-white/40 focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/40"
-              />
-            </div>
-            <div>
-              <label htmlFor="email" className="text-xs uppercase tracking-[0.25em] text-white/60">
-                Email
-              </label>
-              <input
-                id="email"
-                name="email"
-                type="email"
-                placeholder="you@example.com"
-                className="mt-2 w-full rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-sm text-white placeholder:text-white/40 focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/40"
-              />
-            </div>
-            <div>
-              <label htmlFor="message" className="text-xs uppercase tracking-[0.25em] text-white/60">
-                Project details
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                rows="4"
-                placeholder="Tell me about your idea, timeline, and what success looks like."
-                className="mt-2 w-full rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-sm text-white placeholder:text-white/40 focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/40"
-              />
-            </div>
-            <button
-              type="submit"
-              className="w-full rounded-full bg-accent px-6 py-3 text-sm font-semibold text-surface shadow-glow transition-transform hover:-translate-y-0.5"
-            >
-              Send message
-            </button>
-          </form>
+          <div className="space-y-4">
+            {contactMethods.map((method) => (
+              <a
+                key={method.label}
+                href={method.href}
+                className="flex items-center justify-between rounded-2xl border border-white/10 bg-white/5 px-6 py-4 text-sm text-white/80 transition-colors hover:border-accent hover:text-white"
+                {...(method.href.startsWith('http') ? { target: '_blank', rel: 'noreferrer' } : {})}
+              >
+                <span className="text-xs uppercase tracking-[0.25em] text-white/60">{method.label}</span>
+                <span className="font-medium">{method.value}</span>
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </section>
