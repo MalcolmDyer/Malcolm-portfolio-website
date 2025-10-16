@@ -1,7 +1,10 @@
 import { Navbar } from './components/Navbar.jsx';
 import { Hero } from './components/Hero.jsx';
 import { About } from './components/About.jsx';
+import { Education } from './components/Education.jsx';
+import { Experience } from './components/Experience.jsx';
 import { ProjectGrid } from './components/ProjectGrid.jsx';
+import { Skills } from './components/Skills.jsx';
 import { Contact } from './components/Contact.jsx';
 import { Footer } from './components/Footer.jsx';
 
@@ -12,7 +15,10 @@ function App() {
       <main className="pb-32">
         <Hero />
         <About />
+        <Education />
+        <Experience />
         <ProjectGrid />
+        <Skills />
         <Contact />
       </main>
       <Footer />

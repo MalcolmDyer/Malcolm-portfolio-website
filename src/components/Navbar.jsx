@@ -3,9 +3,11 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import clsx from 'clsx';
 
 const sections = [
-  { name: 'About', href: '#about' },
+  { name: 'Summary', href: '#summary' },
+  { name: 'Education', href: '#education' },
+  { name: 'Experience', href: '#experience' },
   { name: 'Projects', href: '#projects' },
-  { name: 'Contact', href: '#contact' }
+  { name: 'Skills', href: '#skills' }
 ];
 
 export function Navbar() {
@@ -37,11 +39,11 @@ export function Navbar() {
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <a href="#top" className="font-semibold text-lg tracking-wide text-white">
-          Malcolm
+          Malcolm Ryu Dyer
         </a>
         <div className="hidden items-center gap-8 text-sm font-medium text-white md:flex">
           {sections.map((section) => (
-            <a key={section.name} href={section.href} className="hover:text-accent transition-colors">
+            <a key={section.name} href={section.href} className="transition-colors hover:text-accent">
               {section.name}
             </a>
           ))}
@@ -49,7 +51,7 @@ export function Navbar() {
             href="#contact"
             className="rounded-full border border-white/30 bg-white/10 px-4 py-2 text-sm font-semibold text-white backdrop-blur hover:bg-accent hover:text-surface"
           >
-            Let&apos;s talk
+            Let&apos;s connect
           </a>
         </div>
         <button
@@ -64,7 +66,7 @@ export function Navbar() {
       <div
         className={clsx(
           'md:hidden transition-all duration-300 overflow-hidden bg-surface/95 backdrop-blur',
-          menuOpen ? 'max-h-48 border-t border-white/10' : 'max-h-0'
+          menuOpen ? 'max-h-72 border-t border-white/10' : 'max-h-0'
         )}
       >
         <div className="space-y-2 px-6 pb-4 pt-2 text-sm font-medium text-white">
@@ -83,7 +85,7 @@ export function Navbar() {
             className="mt-4 block rounded-full border border-white/20 bg-accent px-4 py-2 text-center font-semibold text-surface"
             onClick={() => setMenuOpen(false)}
           >
-            Let&apos;s talk
+            Let&apos;s connect
           </a>
         </div>
       </div>

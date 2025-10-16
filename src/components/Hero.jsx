@@ -1,36 +1,168 @@
+import { useEffect, useRef } from 'react';
 import { ArrowDownIcon } from '@heroicons/react/24/outline';
 
+const THREE_SCRIPT_SRC = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js';
+const VANTA_BIRDS_SCRIPT_SRC = 'https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.birds.min.js';
+
+async function loadExternalScript(src, id) {
+  if (typeof document === 'undefined') return;
+
+  const hasWindow = typeof window !== 'undefined';
+
+  const existing = document.getElementById(id);
+  if (existing) {
+    if (
+      existing.getAttribute('data-loaded') === 'true' ||
+      (hasWindow && src === THREE_SCRIPT_SRC && window.THREE) ||
+      (hasWindow && src === VANTA_BIRDS_SCRIPT_SRC && window.VANTA && window.VANTA.BIRDS)
+    ) {
+      return;
+    }
+
+    await new Promise((resolve, reject) => {
+      existing.addEventListener('load', resolve, { once: true });
+      existing.addEventListener('error', () => reject(new Error(`Failed to load script: ${src}`)), {
+        once: true,
+      });
+    });
+    return;
+  }
+
+  await new Promise((resolve, reject) => {
+    const script = document.createElement('script');
+    script.id = id;
+    script.src = src;
+    script.async = true;
+    script.onload = () => {
+      script.setAttribute('data-loaded', 'true');
+      resolve();
+    };
+    script.onerror = () => reject(new Error(`Failed to load script: ${src}`));
+    document.head.appendChild(script);
+  });
+}
+
+const contactItems = [
+  { label: 'San José, CA' },
+  { label: 'malcolm.ryu.dyer@gmail.com', href: 'mailto:malcolm.ryu.dyer@gmail.com' },
+  { label: '(408) 340-8601', href: 'tel:+14083408601' },
+  { label: 'linkedin.com/in/malcolm-dyer', href: 'https://linkedin.com/in/malcolm-dyer' }
+];
+
 export function Hero() {
+  const backgroundRef = useRef(null);
+  const effectRef = useRef(null);
+
+  useEffect(() => {
+    if (typeof window === 'undefined' || !backgroundRef.current) return undefined;
+
+    let isMounted = true;
+
+    const initEffect = async () => {
+      try {
+        await loadExternalScript(THREE_SCRIPT_SRC, 'threejs-script');
+        await loadExternalScript(VANTA_BIRDS_SCRIPT_SRC, 'vanta-birds-script');
+
+        if (!isMounted || !backgroundRef.current) return;
+
+        if (!window.VANTA || !window.VANTA.BIRDS) {
+          throw new Error('Vanta Birds script failed to load.');
+        }
+
+        if (effectRef.current) {
+          effectRef.current.destroy();
+          effectRef.current = null;
+        }
+
+        effectRef.current = window.VANTA.BIRDS({
+          THREE: window.THREE,
+          el: backgroundRef.current,
+          backgroundAlpha: 0,
+          color1: 0xff3c70,
+          color2: 0x3256ff,
+          colorMode: 'varianceGradient',
+          quantity: 4,
+          cohesion: 22,
+          separation: 26,
+          alignment: 24,
+          speedLimit: 4,
+          birdSize: 1.4,
+        });
+      } catch (error) {
+        console.error('Failed to initialize the Vanta Birds effect.', error);
+      }
+    };
+
+    initEffect();
+
+    return () => {
+      isMounted = false;
+      if (effectRef.current) {
+        effectRef.current.destroy();
+        effectRef.current = null;
+      }
+    };
+  }, []);
+
   return (
     <section
       id="top"
-      className="relative flex min-h-screen items-center justify-center overflow-hidden px-6 pt-32"
+      className="relative isolate flex min-h-screen items-center justify-center overflow-hidden px-6 pt-32"
     >
-      <div className="absolute inset-0 -z-10 bg-radial" aria-hidden="true" />
-      <div className="absolute -left-40 -top-32 -z-10 h-80 w-80 rounded-full bg-accent/20 blur-3xl" aria-hidden />
-      <div className="absolute -right-24 bottom-0 -z-10 h-96 w-96 rounded-full bg-gradient-to-tr from-accent to-purple-500 opacity-30 blur-3xl" aria-hidden />
+      <div ref={backgroundRef} className="pointer-events-none absolute inset-0" style={{ zIndex: -10 }} aria-hidden />
+      <div
+        className="absolute inset-0"
+        style={{
+          zIndex: -5,
+          background: `radial-gradient(circle at 20% -10%, rgba(255, 99, 146, 0.3), transparent 55%),
+            radial-gradient(circle at 85% 45%, rgba(78, 118, 255, 0.32), transparent 60%),
+            linear-gradient(180deg, rgba(9, 12, 23, 0.7) 0%, rgba(9, 12, 23, 0.78) 55%, rgba(9, 12, 23, 0.85) 100%)`,
+        }}
+        aria-hidden
+      />
 
-      <div className="mx-auto max-w-3xl text-center text-white">
-        <p className="text-sm uppercase tracking-[0.4em] text-white/60">Product Designer & Front-end Developer</p>
-        <h1 className="mt-6 text-4xl font-semibold leading-tight sm:text-5xl md:text-6xl">
-          Creating digital experiences that feel effortless and delightful
-        </h1>
+      <div className="relative z-10 mx-auto max-w-4xl text-center text-white">
+        <p className="text-sm uppercase tracking-[0.4em] text-white/60">Software Engineering Student &amp; Frontend Engineer</p>
+        <h1 className="mt-6 text-4xl font-semibold leading-tight sm:text-5xl md:text-6xl">Malcolm Ryu Dyer</h1>
         <p className="mt-6 text-lg text-white/70">
-          I partner with ambitious teams to craft high-impact interfaces, balancing thoughtful design with robust
-          engineering. From concept to polish, I build products people love using.
+          San José-based engineer focused on secure, resilient user experiences. I build responsive web interfaces,
+          modernize testing pipelines, and lead collaborative workflows that keep teams shipping with confidence.
         </p>
+        <div className="mt-10 flex flex-wrap items-center justify-center gap-4 text-sm text-white/70">
+          {contactItems.map((item) => {
+            const className = 'rounded-full border border-white/20 bg-white/5 px-4 py-2 transition-colors hover:border-accent hover:text-white';
+            if (item.href) {
+              const isExternal = item.href.startsWith('http');
+              return (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  className={className}
+                  {...(isExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
+                >
+                  {item.label}
+                </a>
+              );
+            }
+            return (
+              <span key={item.label} className={className}>
+                {item.label}
+              </span>
+            );
+          })}
+        </div>
         <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
           <a
-            href="#projects"
+            href="#summary"
             className="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 font-semibold text-surface shadow-glow transition-transform hover:-translate-y-0.5"
           >
-            View portfolio
+            Explore my journey
           </a>
           <a
             href="#contact"
             className="inline-flex items-center gap-2 text-sm font-medium text-white/80 hover:text-white"
           >
-            <span>Get in touch</span>
+            <span>Let&apos;s build together</span>
             <ArrowDownIcon className="h-4 w-4" />
           </a>
         </div>
