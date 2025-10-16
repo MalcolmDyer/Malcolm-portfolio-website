@@ -1,47 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { ArrowDownIcon } from '@heroicons/react/24/outline';
 
-const THREE_SCRIPT_SRC = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js';
-const VANTA_BIRDS_SCRIPT_SRC = 'https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.birds.min.js';
-
-async function loadExternalScript(src, id) {
-  if (typeof document === 'undefined') return;
-
-  const hasWindow = typeof window !== 'undefined';
-
-  const existing = document.getElementById(id);
-  if (existing) {
-    if (
-      existing.getAttribute('data-loaded') === 'true' ||
-      (hasWindow && src === THREE_SCRIPT_SRC && window.THREE) ||
-      (hasWindow && src === VANTA_BIRDS_SCRIPT_SRC && window.VANTA && window.VANTA.BIRDS)
-    ) {
-      return;
-    }
-
-    await new Promise((resolve, reject) => {
-      existing.addEventListener('load', resolve, { once: true });
-      existing.addEventListener('error', () => reject(new Error(`Failed to load script: ${src}`)), {
-        once: true,
-      });
-    });
-    return;
-  }
-
-  await new Promise((resolve, reject) => {
-    const script = document.createElement('script');
-    script.id = id;
-    script.src = src;
-    script.async = true;
-    script.onload = () => {
-      script.setAttribute('data-loaded', 'true');
-      resolve();
-    };
-    script.onerror = () => reject(new Error(`Failed to load script: ${src}`));
-    document.head.appendChild(script);
-  });
-}
-
 const contactItems = [
   { label: 'San José, CA' },
   { label: 'malcolm.ryu.dyer@gmail.com', href: 'mailto:malcolm.ryu.dyer@gmail.com' },
@@ -54,28 +13,31 @@ export function Hero() {
   const effectRef = useRef(null);
 
   useEffect(() => {
-    if (typeof window === 'undefined' || !backgroundRef.current) return undefined;
+    if (typeof window === 'undefined') return undefined;
 
     let isMounted = true;
 
     const initEffect = async () => {
+      if (!backgroundRef.current) return;
+
       try {
-        await loadExternalScript(THREE_SCRIPT_SRC, 'threejs-script');
-        await loadExternalScript(VANTA_BIRDS_SCRIPT_SRC, 'vanta-birds-script');
+        const [{ default: vantaBirds }, THREE] = await Promise.all([
+          import('vanta/dist/vanta.birds.min'),
+          import('three'),
+        ]);
 
         if (!isMounted || !backgroundRef.current) return;
 
-        if (!window.VANTA || !window.VANTA.BIRDS) {
-          throw new Error('Vanta Birds script failed to load.');
-        }
+        const threeInstance = THREE.default ?? THREE;
 
         if (effectRef.current) {
           effectRef.current.destroy();
           effectRef.current = null;
         }
 
-        effectRef.current = window.VANTA.BIRDS({
+        effectRef.current = vantaBirds({
           el: backgroundRef.current,
+          THREE: threeInstance,
           backgroundAlpha: 0,
           color1: 0xff3c70,
           color2: 0x3256ff,
