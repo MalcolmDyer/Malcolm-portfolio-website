@@ -20,9 +20,13 @@ export function Hero() {
     const initEffect = async () => {
       if (!backgroundRef.current) return;
 
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        return;
+      }
+
       try {
-        const [{ default: vantaBirds }, THREE] = await Promise.all([
-          import('vanta/dist/vanta.birds.min'),
+        const [{ default: vantaClouds }, THREE] = await Promise.all([
+          import('vanta/dist/vanta.clouds.min'),
           import('three'),
         ]);
 
@@ -35,22 +39,20 @@ export function Hero() {
           effectRef.current = null;
         }
 
-        effectRef.current = vantaBirds({
+        effectRef.current = vantaClouds({
           el: backgroundRef.current,
           THREE: threeInstance,
           backgroundAlpha: 0,
-          color1: 0xff3c70,
-          color2: 0x3256ff,
-          colorMode: 'varianceGradient',
-          quantity: 4,
-          cohesion: 22,
-          separation: 26,
-          alignment: 24,
-          speedLimit: 4,
-          birdSize: 1.4,
+          skyColor: 0x05080f,
+          cloudColor: 0xf7fbff,
+          cloudShadowColor: 0x1a2a4a,
+          sunColor: 0xff6f91,
+          sunlightColor: 0xffc197,
+          speed: 0.8,
+          zoom: 0.9,
         });
       } catch (error) {
-        console.error('Failed to initialize the Vanta Birds effect.', error);
+        console.error('Failed to initialize the Vanta Clouds effect.', error);
       }
     };
 
@@ -70,14 +72,15 @@ export function Hero() {
       id="top"
       className="relative flex min-h-screen items-center justify-center overflow-hidden px-6 pt-32"
     >
-      <div ref={backgroundRef} className="pointer-events-none absolute inset-0" style={{ zIndex: -20 }} aria-hidden />
+      <div ref={backgroundRef} className="pointer-events-none absolute inset-0" style={{ zIndex: 0 }} aria-hidden />
       <div
         className="absolute inset-0"
         style={{
           zIndex: -10,
-          background: `radial-gradient(circle at 20% -10%, rgba(255, 99, 146, 0.35), transparent 55%),
-            radial-gradient(circle at 85% 45%, rgba(78, 118, 255, 0.4), transparent 60%),
-            linear-gradient(180deg, rgba(9, 12, 23, 0.8) 0%, rgba(9, 12, 23, 0.9) 55%, rgba(9, 12, 23, 0.95) 100%)`,
+          opacity: 0.55,
+          background: `radial-gradient(circle at 20% -10%, rgba(255, 99, 146, 0.25), transparent 55%),
+            radial-gradient(circle at 85% 45%, rgba(78, 118, 255, 0.3), transparent 60%),
+            linear-gradient(180deg, rgba(9, 12, 23, 0.4) 0%, rgba(9, 12, 23, 0.65) 55%, rgba(9, 12, 23, 0.85) 100%)`,
         }}
         aria-hidden
       />
