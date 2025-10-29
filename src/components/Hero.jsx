@@ -119,9 +119,10 @@ export function Hero() {
         <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
           <a
             href="#summary"
-            className="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 font-semibold text-surface shadow-glow transition-transform hover:-translate-y-0.5"
+            className="inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-accent to-sky-400 px-7 py-3 font-semibold text-surface shadow-glow transition-transform hover:-translate-y-0.5"
           >
-            Explore my journey
+            <span>Explore my journey</span>
+            <ArrowDownIcon className="h-5 w-5" />
           </a>
         </div>
       </div>
