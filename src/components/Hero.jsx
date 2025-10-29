@@ -86,7 +86,7 @@ export function Hero() {
       />
 
       <div className="relative z-10 mx-auto max-w-4xl text-center text-white">
-        <p className="text-sm uppercase tracking-[0.4em] text-white/60">Software Engineering Student &amp; Frontend Engineer</p>
+        <p className="text-sm uppercase tracking-[0.4em] text-white/60">Aspiring Software Engineer</p>
         <h1 className="mt-6 text-4xl font-semibold leading-tight sm:text-5xl md:text-6xl">Malcolm Ryu Dyer</h1>
         <p className="mt-6 text-lg text-white/70">
           San José-based engineer focused on secure, resilient user experiences. I build responsive web interfaces,
