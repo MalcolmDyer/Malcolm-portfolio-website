@@ -123,13 +123,6 @@ export function Hero() {
           >
             Explore my journey
           </a>
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-slate-900/70 px-5 py-3 text-sm font-semibold text-white/90 shadow-elevate backdrop-blur transition-all hover:border-accent hover:bg-accent/10 hover:text-white hover:-translate-y-0.5"
-          >
-            <span>Let&apos;s build together</span>
-            <ArrowDownIcon className="h-4 w-4" />
-          </a>
         </div>
       </div>
     </section>
