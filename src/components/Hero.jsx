@@ -92,9 +92,10 @@ export function Hero() {
           San José-based engineer focused on secure, resilient user experiences. I build responsive web interfaces,
           modernize testing pipelines, and lead collaborative workflows that keep teams shipping with confidence.
         </p>
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-4 text-sm text-white/70">
+        <div className="mt-10 flex flex-wrap items-center justify-center gap-4 text-sm text-white/80">
           {contactItems.map((item) => {
-            const className = 'rounded-full border border-white/20 bg-white/5 px-4 py-2 transition-colors hover:border-accent hover:text-white';
+            const className =
+              'rounded-full border border-white/30 bg-slate-900/70 px-4 py-2 text-white/90 shadow-elevate backdrop-blur transition-all hover:border-accent hover:bg-accent/10 hover:text-white';
             if (item.href) {
               const isExternal = item.href.startsWith('http');
               return (
@@ -124,7 +125,7 @@ export function Hero() {
           </a>
           <a
             href="#contact"
-            className="inline-flex items-center gap-2 text-sm font-medium text-white/80 hover:text-white"
+            className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-slate-900/70 px-5 py-3 text-sm font-semibold text-white/90 shadow-elevate backdrop-blur transition-all hover:border-accent hover:bg-accent/10 hover:text-white hover:-translate-y-0.5"
           >
             <span>Let&apos;s build together</span>
             <ArrowDownIcon className="h-4 w-4" />
