@@ -13,7 +13,7 @@ export function About() {
       value: 'Cross-functional collaboration, mentoring, and operations management'
     }
   ];
-
+ 
   return (
     <section id="summary" className="relative mx-auto mt-24 max-w-5xl px-6 text-white">
       <div className="rounded-3xl border border-white/10 bg-white/5 p-10 backdrop-blur">
