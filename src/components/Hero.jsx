@@ -138,10 +138,6 @@ export function Hero() {
       <div className="relative z-10 mx-auto max-w-4xl text-center text-white">
         <p className="text-sm uppercase tracking-[0.4em] text-white/60">Aspiring Software Engineer</p>
         <h1 className="mt-6 text-4xl font-semibold leading-tight sm:text-5xl md:text-6xl">Malcolm Ryu Dyer</h1>
-        <p className="mt-6 text-lg text-white/70">
-          San José-based engineer focused on secure, resilient user experiences. I build responsive web interfaces,
-          modernize testing pipelines, and lead collaborative workflows that keep teams shipping with confidence.
-        </p>
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4 text-sm text-white/80">
           {contactItems.map((item) => {
             const isCopyable = Boolean(item.copyValue);
