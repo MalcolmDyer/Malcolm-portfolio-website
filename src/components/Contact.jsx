@@ -26,7 +26,7 @@ export function Contact() {
             <h2 className="mt-4 text-3xl font-semibold">Let&apos;s talk</h2>
             <p className="mt-6 text-sm text-white/70">
               I&apos;m actively seeking internships and collaborative projects for 2025. Reach out and let&apos;s explore how we can
-              ship something resilient together.
+              ship something resilient together. 
             </p>
           </div>
           <div className="space-y-4">
