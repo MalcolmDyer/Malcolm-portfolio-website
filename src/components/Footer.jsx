@@ -2,7 +2,7 @@ export function Footer() {
   return (
     <footer className="mx-auto mt-24 max-w-6xl px-6 pb-12 text-sm text-white/60">
       <div className="flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 sm:flex-row">
-        <p>© {new Date().getFullYear()} Malcolm Ryu Dyer. Always learning, always securing.</p>
+        <p>© {new Date().getFullYear()} Malcolm Ryu Dyer. Always learning.</p>
         <div className="flex gap-6">
           <a href="mailto:malcolm.ryu.dyer@gmail.com" className="hover:text-white">
             Email
