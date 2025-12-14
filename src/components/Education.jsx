@@ -20,7 +20,7 @@ export function Education() {
     <section id="education" className="mx-auto mt-24 max-w-5xl px-6 text-white">
       <div className="mb-6 text-center md:text-left">
         <p className="text-sm font-semibold uppercase tracking-[0.35em] text-accent">Education</p>
-        <h2 className="mt-3 text-3xl font-semibold">Academic foundation for secure software delivery</h2>
+        <h2 className="mt-3 text-3xl font-semibold">My academic journey</h2>
       </div>
       <div className="space-y-6">
         {schools.map((school) => (
