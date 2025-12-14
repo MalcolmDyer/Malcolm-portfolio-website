@@ -20,10 +20,7 @@ export function About() {
         <p className="text-sm font-semibold uppercase tracking-[0.35em] text-accent">Summary</p>
         <h2 className="mt-4 text-3xl font-semibold">bruh moment</h2>
         <p className="mt-6 text-lg text-white/70">
-          I&apos;m an incoming San José State University software engineering student with a track record of shipping
-          production-ready experiences in high-stakes environments. From modernizing CI/CD pipelines and hardening
-          authentication flows to coordinating fast-paced restaurant operations, I bring a blend of technical rigor and
-          people-first leadership to every project.
+          I&apos;m a San José State University software engineering student with many applied projects under my belt.
         </p>
         <div className="mt-8 grid gap-6 md:grid-cols-3">
           {highlights.map((item) => (
