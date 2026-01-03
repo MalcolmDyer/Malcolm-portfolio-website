@@ -82,16 +82,13 @@ export function Navbar() {
           </clipPath>
         </defs>
       </svg>
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <a href="#top" className="font-semibold text-lg tracking-wide text-white">
-          Malcolm Ryu Dyer
-        </a>
-        <div className="hidden items-center gap-4 text-sm font-medium text-white md:flex">
+      <nav className="flex w-full items-center justify-end px-4 py-4 sm:px-6">
+        <div className="hidden items-center gap-3 text-sm font-medium text-white md:flex">
           <a
-            href="#resume"
-            className="rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold text-white backdrop-blur transition hover:border-accent hover:bg-accent/10 hover:text-accent"
+            href="#contact"
+            className="rounded-full border border-white/30 bg-white/10 px-4 py-2 text-sm font-semibold text-white backdrop-blur hover:bg-accent hover:text-surface"
           >
-            Resume preview
+            Let&apos;s connect
           </a>
           <div className="flex items-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-3 py-2 backdrop-blur">
             {socialLinks.map((link) => (
@@ -100,12 +97,6 @@ export function Navbar() {
               </SocialButton>
             ))}
           </div>
-          <a
-            href="#contact"
-            className="rounded-full border border-white/30 bg-white/10 px-4 py-2 text-sm font-semibold text-white backdrop-blur hover:bg-accent hover:text-surface"
-          >
-            Let&apos;s connect
-          </a>
         </div>
         <button
           type="button"
@@ -123,13 +114,6 @@ export function Navbar() {
         )}
       >
         <div className="space-y-3 px-6 pb-5 pt-3 text-sm font-medium text-white">
-          <a
-            href="#resume"
-            className="block rounded-lg px-3 py-2 hover:bg-white/10"
-            onClick={() => setMenuOpen(false)}
-          >
-            Resume preview
-          </a>
           <div className="grid grid-cols-2 gap-3 rounded-2xl border border-white/10 bg-white/5 p-3">
             {socialLinks.map((link) => (
               <a
