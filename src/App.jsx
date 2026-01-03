@@ -1,10 +1,8 @@
 import { Navbar } from './components/Navbar.jsx';
 import { Hero } from './components/Hero.jsx';
+import { ResumePreview } from './components/ResumePreview.jsx';
 import { About } from './components/About.jsx';
-import { Education } from './components/Education.jsx';
-import { Experience } from './components/Experience.jsx';
-import { ProjectGrid } from './components/ProjectGrid.jsx';
-import { Skills } from './components/Skills.jsx';
+import { Quantum } from './components/Quantum.jsx';
 import { Contact } from './components/Contact.jsx';
 import { Footer } from './components/Footer.jsx';
 
@@ -14,11 +12,9 @@ function App() {
       <Navbar />
       <main className="pb-32">
         <Hero />
+        <ResumePreview />
         <About />
-        <Education />
-        <Experience />
-        <ProjectGrid />
-        <Skills />
+        <Quantum />
         <Contact />
       </main>
       <Footer />
