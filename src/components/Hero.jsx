@@ -84,7 +84,7 @@ export function Hero() {
         <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
           <a
             href="#resume"
-            className="inline-flex items-center gap-3 rounded-full border border-white/30 bg-white/10 px-7 py-3 font-semibold text-white shadow-elevate backdrop-blur transition-all hover:-translate-y-0.5 hover:border-accent hover:bg-white/15 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
+            className="inline-flex items-center gap-3 rounded-full border border-white/30 bg-white/10 px-7 py-3 font-semibold text-[#0d0529] shadow-elevate backdrop-blur transition-all hover:-translate-y-0.5 hover:border-[#0d0529] hover:bg-white/15 hover:text-[#0d0529] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
           >
             <span>Explore my journey</span>
             <ArrowDownIcon className="h-5 w-5" />

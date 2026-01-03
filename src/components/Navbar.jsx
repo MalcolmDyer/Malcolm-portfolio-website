@@ -86,7 +86,7 @@ export function Navbar() {
         <div className="hidden items-center gap-3 text-sm font-medium text-white md:flex">
           <a
             href="#contact"
-            className="rounded-full border border-white/30 bg-white/10 px-4 py-2 text-sm font-semibold text-white backdrop-blur hover:bg-accent hover:text-surface"
+            className="rounded-full border border-white/30 bg-white/10 px-4 py-2 text-sm font-semibold text-white backdrop-blur transition-transform duration-200 hover:-translate-y-0.5 hover:scale-[1.03]"
           >
             Let&apos;s connect
           </a>
