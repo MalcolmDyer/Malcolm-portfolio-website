@@ -186,7 +186,7 @@ export function Hero() {
         </div>
         <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
           <a
-            href="#summary"
+            href="#resume"
             className="inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-accent via-sky-400 to-sky-500 px-7 py-3 font-semibold text-surface shadow-glow transition-all hover:-translate-y-0.5 hover:from-sky-300 hover:via-accent hover:to-sky-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
           >
             <span>Explore my journey</span>
