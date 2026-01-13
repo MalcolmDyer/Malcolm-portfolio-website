@@ -2,61 +2,61 @@ import { useEffect, useRef } from 'react';
 import { ArrowDownIcon } from '@heroicons/react/24/outline';
 
 const MAGIC_PALETTE = {
-  skyLeft: [12, 18, 64],
-  skyRight: [18, 140, 170],
-  skyGlow: [160, 110, 220],
-  cloudCool: [220, 240, 250],
-  cloudWarm: [248, 214, 232],
-  shadowCool: [24, 42, 96],
-  shadowWarm: [110, 40, 140],
-  sunCore: [246, 112, 140],
-  sunBloom: [252, 214, 156],
-  sunlightCool: [248, 184, 164],
-  sunlightWarm: [252, 232, 194],
-  overlayA: [236, 112, 186],
-  overlayB: [84, 156, 230],
+  skyLeft: [18, 24, 74],
+  skyRight: [120, 158, 210],
+  skyGlow: [214, 126, 196],
+  cloudCool: [216, 228, 242],
+  cloudWarm: [252, 206, 186],
+  shadowCool: [36, 44, 92],
+  shadowWarm: [118, 66, 104],
+  sunCore: [255, 148, 102],
+  sunBloom: [255, 206, 150],
+  sunlightCool: [246, 182, 162],
+  sunlightWarm: [255, 224, 186],
+  overlayA: [242, 126, 168],
+  overlayB: [146, 170, 220],
 };
 
 const DAY_STAGES = [
   {
     label: 'sunrise',
-    sky: [255, 168, 118],
-    clouds: [255, 202, 176],
-    shadow: [110, 64, 112],
-    sun: [255, 164, 96],
-    sunlight: [255, 214, 160],
-    overlayA: [255, 160, 140],
-    overlayB: [255, 196, 130],
+    sky: [252, 176, 132],
+    clouds: [255, 206, 186],
+    shadow: [128, 76, 118],
+    sun: [255, 160, 110],
+    sunlight: [255, 216, 170],
+    overlayA: [252, 162, 150],
+    overlayB: [252, 198, 142],
   },
   {
     label: 'daylight',
-    sky: [112, 186, 230],
-    clouds: [232, 246, 255],
-    shadow: [68, 98, 160],
-    sun: [255, 214, 132],
-    sunlight: [255, 232, 190],
-    overlayA: [168, 212, 255],
-    overlayB: [120, 186, 240],
+    sky: [122, 178, 222],
+    clouds: [226, 236, 246],
+    shadow: [76, 106, 164],
+    sun: [255, 210, 140],
+    sunlight: [255, 232, 198],
+    overlayA: [182, 210, 238],
+    overlayB: [142, 186, 228],
   },
   {
     label: 'sunset',
-    sky: [255, 142, 92],
-    clouds: [255, 188, 162],
-    shadow: [120, 64, 98],
-    sun: [255, 172, 108],
-    sunlight: [255, 220, 172],
-    overlayA: [255, 154, 130],
-    overlayB: [255, 196, 122],
+    sky: [188, 108, 190],
+    clouds: [232, 168, 210],
+    shadow: [92, 58, 130],
+    sun: [232, 138, 200],
+    sunlight: [244, 196, 228],
+    overlayA: [206, 128, 206],
+    overlayB: [178, 132, 210],
   },
   {
     label: 'night',
-    sky: [16, 24, 64],
-    clouds: [126, 144, 176],
-    shadow: [20, 24, 56],
-    sun: [160, 178, 220],
-    sunlight: [132, 156, 210],
-    overlayA: [72, 108, 176],
-    overlayB: [42, 68, 120],
+    sky: [18, 26, 70],
+    clouds: [116, 132, 170],
+    shadow: [22, 28, 62],
+    sun: [148, 168, 210],
+    sunlight: [122, 146, 198],
+    overlayA: [86, 112, 172],
+    overlayB: [50, 72, 126],
   },
 ];
 
@@ -157,11 +157,11 @@ export function Hero() {
       const tintOverlayA = mixRgb(sunriseStage.overlayA, sunsetStage.overlayA, sunriseSunset);
       const tintOverlayB = mixRgb(sunriseStage.overlayB, sunsetStage.overlayB, sunriseSunset);
 
-      const skyColor = mixRgb(baseSky, tintSky, 0.35 + colorDrift * 0.1);
-      const cloudBase = mixRgb(baseClouds, tintClouds, 0.32 + drift * 0.1);
-      const cloudShadow = mixRgb(baseShadow, tintShadow, 0.28 + shimmer * 0.1);
-      const sunColor = mixRgb(baseSun, tintSun, 0.35 + swirl * 0.1);
-      const sunlightColor = mixRgb(baseSunlight, tintSunlight, 0.32 + shimmer * 0.1);
+      const skyColor = mixRgb(baseSky, tintSky, 0.48 + colorDrift * 0.12);
+      const cloudBase = mixRgb(baseClouds, tintClouds, 0.46 + drift * 0.12);
+      const cloudShadow = mixRgb(baseShadow, tintShadow, 0.42 + shimmer * 0.12);
+      const sunColor = mixRgb(baseSun, tintSun, 0.5 + swirl * 0.12);
+      const sunlightColor = mixRgb(baseSunlight, tintSunlight, 0.46 + shimmer * 0.12);
 
       effectRef.current.setOptions({
         skyColor: rgbToHex(skyColor),
@@ -172,8 +172,8 @@ export function Hero() {
       });
 
       if (overlayRef.current) {
-        const glowA = mixRgb(baseOverlayA, tintOverlayA, 0.35 + swirl * 0.1);
-        const glowB = mixRgb(baseOverlayB, tintOverlayB, 0.35 + shimmer * 0.1);
+        const glowA = mixRgb(baseOverlayA, tintOverlayA, 0.48 + swirl * 0.12);
+        const glowB = mixRgb(baseOverlayB, tintOverlayB, 0.48 + shimmer * 0.12);
         overlayRef.current.style.setProperty('--glow-a', `${glowA[0]}, ${glowA[1]}, ${glowA[2]}`);
         overlayRef.current.style.setProperty('--glow-b', `${glowB[0]}, ${glowB[1]}, ${glowB[2]}`);
         overlayRef.current.style.setProperty('--glow-spin', `${(time * 20) % 360}deg`);
