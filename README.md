@@ -9,3 +9,7 @@ sections for a creative professional, including hero, about, projects, and conta
 npm install
 npm run dev
 ```
+
+### Libraries used:
+
+I used a Vanta.js cloud effect for the front page, and I tweaked it to match the style of my website - https://www.vantajs.com/?effect=clouds
