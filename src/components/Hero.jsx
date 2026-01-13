@@ -77,6 +77,23 @@ export function Hero() {
         }}
         aria-hidden
       />
+      <div
+        className="pointer-events-none absolute inset-0 opacity-60"
+        style={{
+          zIndex: -5,
+          backgroundImage: `
+            radial-gradient(1px 1px at 10% 20%, rgba(255,255,255,0.8), transparent 45%),
+            radial-gradient(1px 1px at 30% 70%, rgba(255,255,255,0.7), transparent 50%),
+            radial-gradient(1px 1px at 55% 40%, rgba(255,255,255,0.75), transparent 45%),
+            radial-gradient(1px 1px at 80% 25%, rgba(255,255,255,0.65), transparent 45%),
+            radial-gradient(2px 2px at 65% 80%, rgba(255,255,255,0.4), transparent 60%),
+            radial-gradient(1px 1px at 15% 55%, rgba(255,255,255,0.6), transparent 45%),
+            radial-gradient(1px 1px at 45% 15%, rgba(255,255,255,0.6), transparent 40%)
+          `,
+          backgroundSize: '100% 100%',
+        }}
+        aria-hidden
+      />
 
       <div className="relative z-10 mx-auto max-w-4xl text-center text-white">
         <p className="text-sm uppercase tracking-[0.4em] text-white/60">Aspiring Software Engineer</p>
