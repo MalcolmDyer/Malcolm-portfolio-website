@@ -5,11 +5,6 @@ const contactMethods = [
     href: 'mailto:malcolm.ryu.dyer@gmail.com'
   },
   {
-    label: 'Phone',
-    value: '(408) 340-8601',
-    href: 'tel:+14083408601'
-  },
-  {
     label: 'LinkedIn',
     value: 'linkedin.com/in/malcolm-dyer',
     href: 'https://linkedin.com/in/malcolm-dyer'

@@ -7,9 +7,6 @@ export function Footer() {
           <a href="mailto:malcolm.ryu.dyer@gmail.com" className="hover:text-white">
             Email
           </a>
-          <a href="tel:+14083408601" className="hover:text-white">
-            Phone
-          </a>
           <a href="https://linkedin.com/in/malcolm-dyer" className="hover:text-white" target="_blank" rel="noreferrer">
             LinkedIn
           </a>
